@@ -128,12 +128,12 @@ export default function Home() {
 
       {/* ── MAPA + BARRA SUPERIOR ── */}
       {/* isolate crea un stacking context propio → contiene los z-index internos de Leaflet */}
-      <div className="flex-1 relative flex flex-col isolate">
-        {/* Barra de búsqueda y filtro (solo en tab home) */}
+      <div className="flex-1 flex flex-col isolate overflow-hidden">
+        {/* Barra de búsqueda y filtro (solo en tab home) — parte del flujo flex, NO absolute */}
         {tab === TABS.home && (
-          <div className="absolute top-0 left-0 right-0 z-10 flex items-center gap-2 px-4 py-3
-            bg-white/90 dark:bg-gray-900/90 backdrop-blur shadow-sm">
-            <div className="flex-1 flex items-center bg-white dark:bg-gray-800 rounded-full shadow px-4 py-2 gap-2">
+          <div className="flex-shrink-0 flex items-center gap-2 px-4 py-3
+            bg-white dark:bg-gray-900 shadow-sm z-10">
+            <div className="flex-1 flex items-center bg-gray-100 dark:bg-gray-800 rounded-full px-4 py-2 gap-2">
               <input
                 placeholder="Buscando viaje para..."
                 value={busqueda}
@@ -144,7 +144,7 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </div>
-            <div className="flex items-center bg-white dark:bg-gray-800 rounded-full shadow px-4 py-2 gap-2">
+            <div className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-full px-4 py-2 gap-2">
               <input
                 placeholder="Filtrar viaje"
                 value={filtro}
